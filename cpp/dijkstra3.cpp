@@ -10,15 +10,25 @@ int INF = 1000000000;
 vector<pair<int, int>> a[7];
 int d[7];
 
+struct cmp {
+	bool operator()(pair<int, int> &a, pair<int, int> &b)
+	{
+		if (a.second == b.second) {
+			return a.first < b.first;
+		}
+		return a.second < b.second;
+	}
+};
+
 void dijkstra(int s)
 {
 	d[s] = 0;
-	priority_queue<pair<int, int>> pq;
+	queue<pair<int, int>, vector<pair<int, int>>, cmp> pq;
 	pq.push((make_pair(s, 0)));
 
 	while (!pq.empty()) {
 		int current = pq.top().first;
-		int distance = -pq.top().second;
+		int distance = pq.top().second;
 
 		pq.pop();
 
@@ -27,12 +37,11 @@ void dijkstra(int s)
 
 		for (int i = 0; i < a[current].size(); i++) {
 			int next = a[current][i].first;
-
 			int nextDistance = distance + a[current][i].second;
 
 			if (nextDistance < d[next]) {
 				d[next] = nextDistance;
-				pq.push(make_pair(next, -nextDistance));
+				pq.push(make_pair(next, nextDistance));
 			}
 		}
 	}
