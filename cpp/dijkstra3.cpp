@@ -23,12 +23,13 @@ struct cmp {
 void dijkstra(int s)
 {
 	d[s] = 0;
-	queue<pair<int, int>, vector<pair<int, int>>, cmp> pq;
+	// priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> pq;
+	queue<pair<int, int>> pq;
 	pq.push((make_pair(s, 0)));
 
 	while (!pq.empty()) {
-		int current = pq.top().first;
-		int distance = pq.top().second;
+		int current = pq.front().first;
+		int distance = pq.front().second;
 
 		pq.pop();
 
