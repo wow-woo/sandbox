@@ -1,8 +1,9 @@
 #include <stdio.h>
+
 int main()
 {
-	int x = 1;
+	char *arr = "KOREA";
 
-	printf("%d", ~x);
-	printf("%d", -x);
+	printf("%s\n", arr);
+	printf("%s", arr + 3);
 }
