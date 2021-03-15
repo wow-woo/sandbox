@@ -1,9 +1,16 @@
 #include <stdio.h>
+#include <string>
+
+using namespace std;
 
 int main()
 {
-	char *arr = "KOREA";
+	class Human
+	{
+	public:
+		string name = "default name";
+	};
 
-	printf("%s\n", arr);
-	printf("%s", arr + 3);
+	Human kim;
+	printf("%s", kim.name);
 }
